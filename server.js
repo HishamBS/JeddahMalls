@@ -18,14 +18,8 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 
 //Routes
-server.use("/users", require("./routes/users"));
-server.use("/malls", require("./routes/malls"));
-server.use("/malls/:mall_name/stores", require("./routes/stores"));
-
-
-
-
-
+server.use("/users", require("./routes/users.routes"));
+server.use("/malls", require("./routes/malls.routes"));
 
 server.listen(2550, () => {
   console.log("server is running");
