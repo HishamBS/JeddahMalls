@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 //DB Connection
 mongoose
-  .connect("mongodb://localhost/authlocal", {
+  .connect("mongodb://localhost/JeddahMalls", {
     useUnifiedTopology: true,
     useNewUrlParser: true
   })
@@ -19,6 +19,13 @@ server.use(express.urlencoded({ extended: false }));
 
 //Routes
 server.use("/users", require("./routes/users"));
+server.use("/malls", require("./routes/malls"));
+server.use("/malls/:mall_name/stores", require("./routes/stores"));
+
+
+
+
+
 
 server.listen(2550, () => {
   console.log("server is running");
