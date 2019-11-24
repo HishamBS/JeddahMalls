@@ -19,6 +19,17 @@ const mallSchema = new Schema(
       required: true,
       type: String
     },
+    mall_coordinates: {
+      lat: {
+        type: String,
+        required: true
+      },
+      long: {
+        type: String,
+        required: true
+      },
+      required: true
+    },
     mall_stores: [
       {
         type: Schema.Types.ObjectId,
