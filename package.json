@@ -19,6 +19,9 @@
   "homepage": "https://github.com/HishamBS/JeddahMalls#readme",
   "description": "",
   "dependencies": {
+    "admin-bro": "^1.4.2",
+    "admin-bro-expressjs": "^0.3.0",
+    "admin-bro-mongoose": "^0.3.0",
     "bcrypt": "^3.0.7",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
