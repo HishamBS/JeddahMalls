@@ -8,6 +8,20 @@ process.env.SECRET_KEY = "secret";
 
 //registration
 
+router.get("/", (req, res) => {
+  User.find()
+    .then(allusers => {
+      for(user in allusers)
+      {
+        allusers[user].password='password is hashed , u r not allowed to see it'
+      }
+      res.json(allusers)
+      
+      
+    })
+    .catch(err => res.send(err));
+});
+
 router.post("/register", (req, res) => {
   const newUser = { ...req.body };
   User.findOne({ email: newUser.email })
@@ -39,7 +53,7 @@ router.post("/login", (req, res) => {
           let token = jwt.sign(payload, process.env.SECRET_KEY, {
             expiresIn: "24h"
           });
-          res.send(token);
+          res.json({ msg: "logged in successfully", token: token });
         } else {
           res.send("password is not correct");
         }
@@ -51,13 +65,33 @@ router.post("/login", (req, res) => {
 });
 //get user
 //get user will be from the frontend
-router.get("/profile", (req, res) => {
-  let decoded = jwt.verify(req.body.token, process.env.SECRET_KEY);
-  User.findById(decoded.user._id)
+router.get("/profile/:id", (req, res) => {
+  User.findById(req.params.id)
     .then(user => {
-      user ? res.json(decoded.user) : res.send("token is not correct");
+      user.password = "";
+      user ? res.json(user) : res.json("user not found");
     })
     .catch(err => res.send(err));
 });
 
+//edit user
+router.put("/profile/:id", (req, res) => {
+  let edited = req.body;
+  if(edited.password)
+  {
+    bcrypt.hash(edited.password, 10, (err, hash) => {
+      edited.password = hash;
+    });
+  }
+    setTimeout(()=>{
+      User.findByIdAndUpdate(req.params.id, edited)
+      .then(response => {
+        res.json({ msg: "edited successfully", user: response });
+      })
+      .catch(err => {
+        res.json({ msg: "something went wrong", err: err });
+      });
+    },3000)
+ 
+})
 module.exports = router;

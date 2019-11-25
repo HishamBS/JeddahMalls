@@ -8,23 +8,18 @@ const storeSchema = new Schema(
       type: String
     },
     store_desc: {
-      required: true,
       type: String
     },
     store_number: {
-      required: true,
       type: String
     },
     store_image: {
-      required: true,
       type: String
     },
     store_website: {
-      required: true,
       type: String
     },
     store_floor: {
-      required: true,
       type: String
     }
   },
