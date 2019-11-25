@@ -2,19 +2,26 @@ const express = require("express");
 const server = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
-
+const session = require("express-session");
 
 require("dotenv/config");
-mongoose.set('useCreateIndex', true);
+mongoose.set("useCreateIndex", true);
 //DB Connection
 mongoose.connect(
   process.env.DB_CONNECT,
-  { useNewUrlParser: true, useUnifiedTopology: true ,useFindAndModify:false},
+  { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false },
   () => {
     console.log("DB IS CONNECTED");
   }
 );
 //MiddleWares
+// server.use(
+//   session({
+//     secret: process.env.COOKIE_PASS,
+//     resave: true,
+//     saveUninitialized: true
+//   })
+// );
 server.use(cors());
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));

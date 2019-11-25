@@ -4,20 +4,17 @@ const mongoose = require("mongoose");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-process.env.SECRET_KEY = "secret";
-
+require("dotenv/config");
 //registration
 
 router.get("/", (req, res) => {
   User.find()
     .then(allusers => {
-      for(user in allusers)
-      {
-        allusers[user].password='password is hashed , u r not allowed to see it'
+      for (user in allusers) {
+        allusers[user].password =
+          "password is hashed , u r not allowed to see it";
       }
-      res.json(allusers)
-      
-      
+      res.json(allusers);
     })
     .catch(err => res.send(err));
 });
@@ -77,21 +74,19 @@ router.get("/profile/:id", (req, res) => {
 //edit user
 router.put("/profile/:id", (req, res) => {
   let edited = req.body;
-  if(edited.password)
-  {
+  if (edited.password) {
     bcrypt.hash(edited.password, 10, (err, hash) => {
       edited.password = hash;
     });
   }
-    setTimeout(()=>{
-      User.findByIdAndUpdate(req.params.id, edited)
+  setTimeout(() => {
+    User.findByIdAndUpdate(req.params.id, edited)
       .then(response => {
         res.json({ msg: "edited successfully", user: response });
       })
       .catch(err => {
         res.json({ msg: "something went wrong", err: err });
       });
-    },3000)
- 
-})
+  }, 3000);
+});
 module.exports = router;
