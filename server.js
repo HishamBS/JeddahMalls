@@ -2,16 +2,16 @@ const express = require("express");
 const server = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
+require("dotenv/config");
 
 //DB Connection
-mongoose
-  .connect("mongodb://localhost/JeddahMalls", {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-  })
-  .then(res => console.log("db is connected"))
-  .catch(err => console.log(err));
-
+mongoose.connect(
+  process.env.DB_CONNECT,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("DB IS CONNECTED");
+  }
+);
 //MiddleWares
 server.use(cors());
 server.use(express.json());

@@ -27,8 +27,7 @@ const mallSchema = new Schema(
       long: {
         type: String,
         required: true
-      },
-      required: true
+      }
     },
     mall_stores: [
       {
