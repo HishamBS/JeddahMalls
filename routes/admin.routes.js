@@ -19,7 +19,7 @@ const router = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
     let user = await User.findOne({ email: email });
     if (user) {
       let matched = await bcrypt.compareSync(password, user.password);
-      if (matched&&user.role==='admin') {
+      if (matched && user.role === "admin") {
         return user;
       } else {
         return null;

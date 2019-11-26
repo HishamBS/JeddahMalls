@@ -27,9 +27,10 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 
 //Routes
-server.use("/users", require("./routes/users.routes"));
-server.use("/malls", require("./routes/malls.routes"));
-server.use("/stores", require("./routes/stores.routes"));
+server.use("/api/v1/users", require("./routes/users.routes"));
+server.use("/api/v1/malls", require("./routes/malls.routes"));
+server.use("/api/v1/stores", require("./routes/stores.routes"));
+server.use("/api/v1/bookings", require("./routes/bookings.routes"));
 server.use("/admin", require("./routes/admin.routes"));
 
 server.listen(2550, () => {
