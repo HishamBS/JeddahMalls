@@ -16,8 +16,16 @@ const bookingSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: "User"
+      },{
+        type: Schema.Types.ObjectId,
+        ref: "User"
+      },
+    ],mall: 
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Mall"
       }
-    ]
+    
   },
   { timestamps: true }
 );
