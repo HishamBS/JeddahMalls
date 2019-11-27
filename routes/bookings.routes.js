@@ -66,6 +66,16 @@ router.put("/:stylist_id", (req, res) => {
       res.json({ msg: "Booking doesn't exist", err: err });
     });
 });
+//create new booking by user
+router.post("/newbooking", async (req, res) => {
+  try {
+    let booking = new Booking(req.body);
+    let savedBooking = await booking.save();
+    res.json({ msg: "added", booking: savedBooking });
+  } catch (error) {
+    console.log(error);
+  }
+});
 // //delete booking by user_id or stylist_id
 router.delete("/:id", (req, res) => {
   Booking.findOneAndDelete({ 'user': req.params.id })
