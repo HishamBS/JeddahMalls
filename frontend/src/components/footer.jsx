@@ -5,7 +5,7 @@ import Footer from "../imge/Footer.png";
 export default class footer extends Component {
   render() {
     return (
-      <MDBFooter color="grey" className="dark-black-text">
+      <MDBFooter color="grey" className="dark-black-text sticky-bottom">
         <MDBContainer></MDBContainer>
         <div>
           <br />

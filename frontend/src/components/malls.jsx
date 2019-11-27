@@ -8,7 +8,7 @@ import {  MDBBtn } from "mdbreact";
 
 export default class malls extends Component {
     state = {
-
+      search:''
     }
 
     handleChange = (e) => {
@@ -16,7 +16,7 @@ export default class malls extends Component {
     }
 
     filterData = (e) =>{
-      e.preventDefault()
+      // e.preventDefault()
       this.props.filterList(this.state.search)
     }
     render() {
@@ -29,7 +29,7 @@ export default class malls extends Component {
            <h1 className="textCenter">Explore Jeddah Malls</h1>
           <div>   
             <div className="input-group md-form form-sm form-2 pl-0" >
-            <input class="form-control my-0 py-1 red-border" type="text" onChange={this.handleChange} placeholder="Search" aria-label="Search" name="search"  /> 
+            <input class="form-control my-0 py-1 red-border" type="text" onChange={this.handleChange} placeholder="Search" aria-label="Search" name="search" onKeyDown={this.filterData} /> 
             <MDBBtn gradient="aqua" rounded size="sm" type="submit" className="mr-auto" onClick={this.filterData} > Search </MDBBtn>  
           </div> 
 

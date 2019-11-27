@@ -17,7 +17,8 @@ import AdminRole from "./components/adminRole";
 import axios from "axios";
 import MyProfile from "./components/MyProfile";
 import Booking from "./components/booking";
-
+import Login from "./components/container/Login";
+import Signup from "./components/container/Signup";
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -119,7 +120,7 @@ export default class App extends Component {
             />
           )}
         />
-        <Route exact path="/admin" />
+        <Route exact path="/admin" to="http://localhost:2550/admin" />
         <Route
           exact
           path="/AdminRole"
@@ -143,6 +144,12 @@ export default class App extends Component {
         <Route path="/aboutus" component={Aboutus} />
         <Route path="/myprofile" component={MyProfile} />
         <Route path="/booking" component={Booking} />
+        <Route exact path="/register" component={Signup} />
+        <Route
+          exact
+          path="/login"
+          render={() => <Login userLogIn={this.userLogIn} />}
+        />
 
         <Footer />
       </Router>

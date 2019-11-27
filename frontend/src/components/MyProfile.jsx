@@ -5,28 +5,30 @@ import "react-tabs/style/react-tabs.css";
 import Bookings from "./Bookings";
 import Info from "./Info";
 import axios from "axios";
+import jwt_decode from 'jwt-decode'
 
 export default class MyProfile extends Component {
   state = {};
 
-  getUser = async () => {
-    let user = await axios.get(
-      `http://localhost:2550/api/v1/users/profile/5ddc1b9c5c0bab8fe2bcae35`
-    );
-    this.setState(user.data);
-    console.log(this.state);
-  };
 
-  async componentWillMount() {
-    console.log("user.data");
-    this.getUser();
-  }
+
+  
 
   // componentDidMount() {
   //   axios.get(`/api/v1/users/profile/5ddc2762937e73925c21428c`).then(res => {
   //     console.log(res.data);
   //   });
   // }
+  async componentDidMount() {
+      if (!localStorage.usertoken){
+        this.props.history.push('/login')
+      }else{
+        const token = localStorage.usertoken
+        const decoded = await jwt_decode(token)
+        console.log(decoded)
+        this.setState(decoded.user)
+      }
+  }
   render() {
     return (
       <div>
