@@ -64,17 +64,21 @@
   margin-right: auto;
 }
 .im {
-  object-fit: cover;
+  /* object-fit: cover; */
+  /* height: 28rem; */
+  max-height: 17rem;
+  width: 33rem;
+  max-width: 35rem;
+}
+
+.cr {
+  /* object-fit: cover; */
   height: 28rem;
   max-height: 28rem;
   width: 33rem;
   max-width: 33rem;
 }
-
-.cr {
-  object-fit: cover;
-  height: 28rem;
-  max-height: 28rem;
-  width: 33rem;
-  max-width: 33rem;
+.white-text {
+  font-size: 20px;
+  color: white;
 }

@@ -15,6 +15,7 @@ import Stores from './components/stores'
 import Brands from './components/brands'
 import AdminRole from './components/adminRole'
 import axios from 'axios'
+import Stylist from './components/Stylist';
 
 export default class App extends Component {
   
@@ -104,7 +105,6 @@ this.setState({selectMall : select})
       <Router>
       <Navbar/>
       <br/>
-
       <Route exact path="/" exact component={Home}/>
       <Route exact path="/malls" render={props => (<Malls {...props} data={this.state.data} filterList={this.filterList} changeSelecMall={this.changeSelecMall} />)}/>
       <Route path="/stores"  render={props => (< Stores  {...props} data={this.state.data} selectMall={this.state.selectMall}  changeSelectStores ={this.changeSelectStores}/>)}  />
@@ -115,6 +115,7 @@ this.setState({selectMall : select})
       <Route path="/entertainment" component={Entertainment}/>
       <Route path="/service" component={Service}/>
       <Route path="/aboutus" component={Aboutus}/>
+      <Route path='/myprofile' component={Stylist}/>
       
   
       <Footer/>

@@ -31,9 +31,8 @@ export default class navbar extends Component {
       <NavDropdown src={Search} id="basic-nav-dropdown">
         
         <NavDropdown.Item href="#action/3.1">User</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Stylist</NavDropdown.Item>
+        <NavDropdown.Item href="/myprofile">Stylist</NavDropdown.Item>
         <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
       </NavDropdown>
 
       <a href="/admin"> <img src={sign} style={{width:50}} /></a>

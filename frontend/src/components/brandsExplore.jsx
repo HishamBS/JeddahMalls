@@ -10,8 +10,8 @@ export const brandsExplore = props => {
     <Container>
       <br />
 
-      <Card className="cr" style={{ width: "28rem" }}>
-        <Image src={props.elm.store_image} />
+      <Card className="cr" >
+        <Image   className="cr"  src={props.elm.store_image}/>
         <Card.Content>
           <Card.Header> {props.elm.store_name}</Card.Header>
           {/* <Image src={props.ele.store_image}  /> */}
