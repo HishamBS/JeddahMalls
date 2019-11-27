@@ -20,3 +20,61 @@
 .App-link {
   color: #09d3ac;
 }
+.conterner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.conternerBotton {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10%;
+}
+.dec {
+  font-size: 150%;
+  text-align: justify;
+}
+.textCenter {
+  text-align: center;
+}
+.fontSize {
+  text-align: center;
+  font-size: 350%;
+}
+.textMarg {
+  margin-left: 37px;
+}
+.picCenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+.bt {
+  margin-left: 55%;
+}
+.lef {
+  text-align: center;
+}
+.lefExt {
+  text-align: center;
+  font-size: 170%;
+}
+.bto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.im {
+  object-fit: cover;
+  height: 28rem;
+  max-height: 28rem;
+  width: 33rem;
+  max-width: 33rem;
+}
+
+.cr {
+  object-fit: cover;
+  height: 28rem;
+  max-height: 28rem;
+  width: 33rem;
+  max-width: 33rem;
+}
