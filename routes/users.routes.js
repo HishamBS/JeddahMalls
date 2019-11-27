@@ -6,7 +6,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv/config");
 //registration
-
 router.get("/", (req, res) => {
   User.find()
     .then(allusers => {
@@ -15,6 +14,28 @@ router.get("/", (req, res) => {
           "password is hashed , u r not allowed to see it";
       }
       res.json(allusers);
+    })
+    .catch(err => res.send(err));
+});
+
+//get all stylists
+router.get("/stylists", (req, res) => {
+  User.find({ role: "stylist" })
+    .then(allstylists => {
+      for (stylist in allstylists) {
+        allstylists[stylist].password =
+          "password is hashed , u r not allowed to see it";
+      }
+      res.json(allstylists);
+    })
+    .catch(err => res.send(err));
+});
+
+//get specific stylist by his id
+router.get("/stylists/:id", (req, res) => {
+  User.findById(req.params.id)
+    .then(stylist => {
+      res.json(stylist);
     })
     .catch(err => res.send(err));
 });

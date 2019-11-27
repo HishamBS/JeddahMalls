@@ -4,13 +4,24 @@ const AdminBroExpress = require("admin-bro-expressjs");
 const AdminBroMongoose = require("admin-bro-mongoose");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const theme = require("admin-bro-theme-dark");
+
 require("dotenv/config");
 
 AdminBro.registerAdapter(AdminBroMongoose);
 
 const adminBro = new AdminBro({
   databases: [mongoose],
-  rootPath: "/admin"
+  rootPath: "/admin",
+  branding: {
+    theme,
+    logo: "https://drive.google.com/uc?id=1cet9VR9euTe1TjQWzVySTQhKDqdaleaI",
+    companyName: "Jeddah-Malls"
+  },
+  dashboard: {
+    handler: async () => {},
+    component: AdminBro.bundle("../ViralDashBoard.jsx")
+  }
 });
 
 const router = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
