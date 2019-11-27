@@ -3,6 +3,7 @@ const AdminBro = require("admin-bro");
 const AdminBroExpress = require("admin-bro-expressjs");
 const AdminBroMongoose = require("admin-bro-mongoose");
 const User = require("../models/User");
+const Mall = require("../models/Mall");
 const bcrypt = require("bcrypt");
 const theme = require("admin-bro-theme-dark");
 

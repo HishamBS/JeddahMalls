@@ -21,7 +21,11 @@ const storeSchema = new Schema(
     },
     store_floor: {
       type: String
+    },
+    store_type:{
+      type:String
     }
+
   },
   { timestamps: true }
 );
