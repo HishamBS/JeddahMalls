@@ -15,15 +15,14 @@ const bookingSchema = new Schema(
     user: [
       {
         type: Schema.Types.ObjectId,
-        ref: "User.role==='stylist'",
-        required:true
+        ref: "User",
+        required: true
       },
       {
         type: Schema.Types.ObjectId,
         ref: "User",
-        required:true
-      },
-      
+        required: true
+      }
     ]
   },
   { timestamps: true }
