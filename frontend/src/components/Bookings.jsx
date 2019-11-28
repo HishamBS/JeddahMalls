@@ -1,68 +1,49 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { Table } from "semantic-ui-react";
 import "react-tabs/style/react-tabs.css";
-import Cart from "../components/Cart";
+import Tablee from "../components/Tablee";
+
 export default class Bookings extends Component {
   state = {
-    bookings: []
+    bookings: [],
+    booking_status: ""
   };
-  appending = [];
-  approved = [];
-  denied = [];
   async componentDidMount() {
     let bookings = await axios.get(
       `http://localhost:2550/api/v1/bookings/${this.props.data._id}`
     );
     this.setState({ bookings });
-    this.state.bookings.data.map(e => {
-      switch (e.booking_status) {
-        case "appending":
-          this.appending.push(e);
-          break;
-        case "denied":
-          this.denied.push(e);
-          break;
-        case "approved":
-          this.approved.push(e);
-          break;
-      }
-    });
   }
+
   render() {
     return (
       <div>
-        <Tabs className="tabStyles">
-          <TabList>
-            <Tab>
-              <h5>Pending</h5>
-            </Tab>
-            <Tab>
-              <h5>Approved</h5>
-            </Tab>
-            <Tab>
-              <h5>Cancelled</h5>
-            </Tab>
-          </TabList>
-
-          {console.log(this.state.bookings)}
-          {console.log(this.appending)}
-          {console.log(this.denied)}
-          {console.log(this.approved)}
-
-          <TabPanel>
-            {this.appending.map(e => {
-              return (
-                <Cart
-                  booking_time={e.booking_time}
-                  booking_status={e.booking_status}
-                />
-              );
-            })}
-          </TabPanel>
-          <TabPanel></TabPanel>
-          <TabPanel></TabPanel>
-        </Tabs>
+        <Table basic="very" celled collapsing>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Name</Table.HeaderCell>
+              <Table.HeaderCell>booking date</Table.HeaderCell>
+              <Table.HeaderCell>Booking Time</Table.HeaderCell>
+              <Table.HeaderCell>Booking Status</Table.HeaderCell>
+              {this.props.data.role == "stylist" && (
+                <Table.HeaderCell>Respond to the request</Table.HeaderCell>
+              )}
+            </Table.Row>
+          </Table.Header>
+          {this.state.bookings.length == 0
+            ? "wite"
+            : this.state.bookings.data.map(boke => {
+                return (
+                  <Tablee
+                    boke={boke}
+                    status={this.status}
+                    userType={this.props.data.role == "stylist" ? true : false}
+                    myId={this.props.data._id}
+                  />
+                );
+              })}
+        </Table>
       </div>
     );
   }
