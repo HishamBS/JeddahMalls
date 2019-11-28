@@ -5,14 +5,10 @@ import "react-tabs/style/react-tabs.css";
 import Bookings from "./Bookings";
 import Info from "./Info";
 import axios from "axios";
-import jwt_decode from 'jwt-decode'
+import jwt_decode from "jwt-decode";
 
 export default class MyProfile extends Component {
   state = {};
-
-
-
-  
 
   // componentDidMount() {
   //   axios.get(`/api/v1/users/profile/5ddc2762937e73925c21428c`).then(res => {
@@ -20,18 +16,24 @@ export default class MyProfile extends Component {
   //   });
   // }
   async componentDidMount() {
-      if (!localStorage.usertoken){
-        this.props.history.push('/login')
-      }else{
-        const token = localStorage.usertoken
-        const decoded = await jwt_decode(token)
-        console.log(decoded)
-        this.setState(decoded.user)
+    try {
+      if (!localStorage.usertoken) {
+        this.props.history.push("/login");
+      } else {
+        const token = localStorage.usertoken;
+        const decoded = await jwt_decode(token);
+        console.log(decoded);
+        this.setState(decoded.user);
       }
+    } catch (error) {
+      alert('check your credintials')
+      console.log(error);
+      this.props.history.push("/login");
+    }
   }
   render() {
     console.log(this.state);
-    
+
     return (
       <div>
         <Tabs className="tabStyles">
@@ -48,7 +50,7 @@ export default class MyProfile extends Component {
             <Info data={this.state} />
           </TabPanel>
           <TabPanel>
-            <Bookings data={this.state}/>
+            <Bookings data={this.state} />
           </TabPanel>
         </Tabs>
       </div>

@@ -11,12 +11,19 @@ class Login extends Component {
     });
   };
   onSubmitHandelr = e => {
-    e.preventDefault();
-    login(this.state);
-    setTimeout(() => {
-      this.props.history.push("/myprofile");
-    }, 1000);
-    localStorage.getItem("usertoken");
+    try {
+      e.preventDefault();
+      login(this.state);
+      setTimeout(() => {
+        this.props.history.push("/myprofile");
+      }, 3000);
+    } catch (error) {
+      console.log(error);
+      
+      
+    }
+  
+   
   };
 
   render() {
@@ -47,7 +54,7 @@ class Login extends Component {
             Submit
           </button>
           <p className="forgot-password text-right">
-            Forgot <a href="/register">dont have an account , sign up from here</a>
+            <a href="/register">dont have an account , sign up from here</a>
           </p>
         </Form>
       </div>

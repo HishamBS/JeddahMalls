@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Table } from "semantic-ui-react";
 import "react-tabs/style/react-tabs.css";
-import Tablee from "../components/Tablee";
+import UserBookingTable from "../components/UserBookingTable";
 
 export default class Bookings extends Component {
   state = {
@@ -35,7 +35,7 @@ export default class Bookings extends Component {
             ? "wite"
             : this.state.bookings.data.map(boke => {
                 return (
-                  <Tablee
+                  <UserBookingTable
                     boke={boke}
                     status={this.status}
                     userType={this.props.data.role == "stylist" ? true : false}
