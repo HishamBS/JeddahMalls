@@ -19,6 +19,8 @@ import MyProfile from "./components/MyProfile";
 import Booking from "./components/booking";
 import Login from "./components/container/Login";
 import Signup from "./components/container/Signup";
+import jwt_decode from 'jwt-decode'
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,7 @@ export default class App extends Component {
       searchbar: "",
       selectMall: "",
       stores: [],
-      user: null,
+      user: {},
       token: "",
       login: false
     };
@@ -79,12 +81,19 @@ export default class App extends Component {
     });
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     console.log("called component did mount");
     axios.get("/api/v1/malls").then(res => {
       console.log(res.data);
       this.setState({ data: res.data });
     });
+    if(localStorage.usertoken)
+    {
+    const token = localStorage.usertoken
+        const decoded = await jwt_decode(token)
+        console.log(decoded)
+        this.setState({user:decoded.user})
+    }
   }
 
   render() {
@@ -143,7 +152,10 @@ export default class App extends Component {
         <Route path="/service" component={Service} />
         <Route path="/aboutus" component={Aboutus} />
         <Route path="/myprofile" component={MyProfile} />
-        <Route path="/booking" component={Booking} />
+        <Route
+          path="/booking"
+          render={props => <Booking {...props} user={this.state.user} />}
+        />
         <Route exact path="/register" component={Signup} />
         <Route
           exact
@@ -151,7 +163,7 @@ export default class App extends Component {
           render={() => <Login userLogIn={this.userLogIn} />}
         />
 
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     );
   }

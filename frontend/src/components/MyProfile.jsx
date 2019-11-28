@@ -30,6 +30,8 @@ export default class MyProfile extends Component {
       }
   }
   render() {
+    console.log(this.state);
+    
     return (
       <div>
         <Tabs className="tabStyles">
@@ -46,7 +48,7 @@ export default class MyProfile extends Component {
             <Info data={this.state} />
           </TabPanel>
           <TabPanel>
-            <Bookings />
+            <Bookings data={this.state}/>
           </TabPanel>
         </Tabs>
       </div>

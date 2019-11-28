@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import StylisList from "./StylisList";
 import axios from "axios";
-export default class Stylist extends Component {
+import { withRouter } from "react-router-dom";
+
+class booking extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,6 +13,8 @@ export default class Stylist extends Component {
     };
   }
   componentDidMount() {
+    if (!localStorage.usertoken) this.props.history.push("/login");
+
     console.log("bookings");
     axios.get("http://localhost:2550/api/v1/users/stylists").then(res => {
       console.log(res.data);
@@ -21,6 +25,8 @@ export default class Stylist extends Component {
   render() {
     console.log(this.state.data);
     console.log(this.state.data._id);
+    console.log(this.props.user);
+
     return (
       <Container>
         <br />
@@ -32,10 +38,11 @@ export default class Stylist extends Component {
         </h4>
         <br />
         {this.state.data.map(e => (
-          <StylisList elm={e} />
+          <StylisList elm={e} user={this.props.user} />
         ))}
         <br />
       </Container>
     );
   }
 }
+export default withRouter(booking);

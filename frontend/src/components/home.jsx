@@ -121,7 +121,7 @@ export default class home extends Component {
                 alt=""
               />
               <MDBMask className="flex-center">
-                <p className="white-text">Helps!</p>
+                <a href="/booking"><p className="white-text">Helps!</p></a>
               </MDBMask>
             </MDBView>
           </MDBCol>
