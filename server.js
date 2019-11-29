@@ -23,7 +23,10 @@ mongoose.connect(
 //     saveUninitialized: true
 //   })
 // );
-var whitelist = ["http://localhost:3000", "http://jeddahmalls.herokuapp.com/"];
+var whitelist = [
+  "http://localhost:3000",
+  "http://jeddahmallsguide.herokuapp.com/"
+];
 
 var corsOptions = {
   origin: function(origin, callback) {
