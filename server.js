@@ -3,6 +3,7 @@ const server = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const path = require("path");
 const PORT = process.env.PORT || 2550;
 
 require("dotenv/config");
@@ -56,6 +57,6 @@ server.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-server.listen(process.env.PORT, () => {
+server.listen(PORT, () => {
   console.log("server is running");
 });
