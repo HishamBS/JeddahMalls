@@ -24,25 +24,27 @@ mongoose.connect(
 //     saveUninitialized: true
 //   })
 // );
-var whitelist = [
-  "http://localhost:3000",
-  "http://jeddahmallsguide.herokuapp.com/"
-];
 
-var corsOptions = {
-  origin: function(origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      var message =
-        "The CORS policy for this application does not allow access from origin " +
-        origin;
-      callback(new Error(message), false);
-    }
-  }
-};
+// only use this if deployed on seprate locations
+// var whitelist = [
+//   "http://localhost:3000",
+//   "https://jeddahmallsguide.herokuapp.com/"
+// ];
 
-server.use(cors(corsOptions));
+// var corsOptions = {
+//   origin: function(origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       var message =
+//         "The CORS policy for this application does not allow access from origin " +
+//         origin;
+//       callback(new Error(message), false);
+//     }
+//   }
+// };
+
+server.use(cors());
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 server.use(express.static(path.join(__dirname, "build")));
