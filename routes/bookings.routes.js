@@ -86,7 +86,7 @@ router.post("/newbooking", async (req, res) => {
     let savedBooking = await booking.save();
     res.json({ msg: "added", booking: savedBooking });
   } catch (error) {
-    console.log(error);
+    res.json({ msg: error});
   }
 });
 // //delete booking by user_id or stylist_id

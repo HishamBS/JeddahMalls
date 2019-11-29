@@ -7,6 +7,7 @@ import { withRouter} from "react-router-dom";
   state = {
     startDate: new Date()
   };
+   
   handleBook = async() => {
     let booked = await axios.post("/api/v1/bookings/newbooking", {
       user: [this.props.user, this.props.elm._id],

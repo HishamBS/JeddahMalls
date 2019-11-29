@@ -79,7 +79,7 @@ router.post("/login", (req, res) => {
         res.send("email not found");
       }
     })
-    .catch(err => {console.log(err)});
+    .catch(err => {res.send(err)});
 });
 //get user
 //get user will be from the frontend

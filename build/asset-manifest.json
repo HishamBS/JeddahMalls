@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.16aadf8a.chunk.css",
+    "main.js": "/static/js/main.49c948c7.chunk.js",
+    "main.js.map": "/static/js/main.49c948c7.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e6faa928.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e6faa928.js.map",
+    "static/css/2.615eb2f9.chunk.css": "/static/css/2.615eb2f9.chunk.css",
+    "static/js/2.c82827ba.chunk.js": "/static/js/2.c82827ba.chunk.js",
+    "static/js/2.c82827ba.chunk.js.map": "/static/js/2.c82827ba.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.a1aee6c005508c336e77b89297d3a513.js": "/precache-manifest.a1aee6c005508c336e77b89297d3a513.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.615eb2f9.chunk.css.map": "/static/css/2.615eb2f9.chunk.css.map",
+    "static/css/main.16aadf8a.chunk.css.map": "/static/css/main.16aadf8a.chunk.css.map",
+    "static/media/Activity.jpg": "/static/media/Activity.d2fab642.jpg",
+    "static/media/LePrestige.png": "/static/media/LePrestige.c91594cf.png",
+    "static/media/RedSeaMall.jpg": "/static/media/RedSeaMall.c9d39cf0.jpg",
+    "static/media/Restaurant.png": "/static/media/Restaurant.eb684131.png",
+    "static/media/mdb.css": "/static/media/arrow_right.8ef6a08c.svg",
+    "static/media/muvi.png": "/static/media/muvi.03dc0676.png",
+    "static/media/personalShopper.jpg": "/static/media/personalShopper.b13a58af.jpg",
+    "static/media/reviews.png": "/static/media/reviews.fe6dd137.png",
+    "static/media/shopper.png": "/static/media/shopper.8c4bee5d.png",
+    "static/media/shopping.png": "/static/media/shopping.faa21df8.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e6faa928.js",
+    "static/css/2.615eb2f9.chunk.css",
+    "static/js/2.c82827ba.chunk.js",
+    "static/css/main.16aadf8a.chunk.css",
+    "static/js/main.49c948c7.chunk.js"
+  ]
+}

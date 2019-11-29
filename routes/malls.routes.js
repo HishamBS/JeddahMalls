@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
     let allMalls = await Mall.find();
     res.json(allMalls);
   } catch (error) {
-    console.log(error);
+    res.json({ msg: error});
   }
 });
 
@@ -31,7 +31,7 @@ router.get("/:id/stores/", async (req, res) => {
     let chosenMall = await Mall.findById(req.params.id).populate("mall_stores");
     res.json(chosenMall.mall_stores);
   } catch (error) {
-    console.log(error);
+    res.json({ msg: error});
   }
 });
 
@@ -42,7 +42,7 @@ router.post("/newmall", async (req, res) => {
     let savedMall = await mall.save();
     res.json({ msg: "added", mall: savedMall });
   } catch (error) {
-    console.log(error);
+    res.json({ msg: error});
   }
 });
 //delete a Mall
@@ -70,7 +70,7 @@ router.put("/:mall_id", (req, res) => {
 });
 //add a store inside the mall
 router.put("/:id/stores/newstore", async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   Mall.findById(req.params.id).then(mall => {
     let store = new Store(req.body);
     mall.mall_stores.push(store._id);

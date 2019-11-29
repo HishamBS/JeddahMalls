@@ -51,17 +51,17 @@ export default class App extends Component {
     }
   };
 
-  filteStore =  string => {
+  filteStore = string => {
     {
       let itemstmpStore = [...this.state.stores];
       let searchWord = new RegExp(string + ".*");
-      let filtered =  itemstmpStore.filter(item => {
+      let filtered = itemstmpStore.filter(item => {
         return item.store_name.toLowerCase().match(searchWord);
       });
       if (filtered.length > 0) {
         console.log("filtered: ", filtered);
         this.setState({ stores: filtered, items: itemstmpStore });
-      }  
+      }
     }
   };
 
@@ -81,7 +81,7 @@ export default class App extends Component {
   };
 
   async componentDidMount() {
-    axios.get("/api/v1/malls").then(res => {
+    axios.get("/api/v1/malls/").then(res => {
       this.setState({ data: res.data });
     });
     if (localStorage.usertoken) {
@@ -92,30 +92,68 @@ export default class App extends Component {
   }
 
   render() {
-
     return (
       <Router>
         <Navbar />
         <br />
         <Route exact path="/" exact component={Home} />
-        <Route exact path="/malls" render={props => (<Malls  {...props} data={this.state.data}  filterList={this.filterList} changeSelecMall={this.changeSelecMall} />)} />
-        <Route path="/stores" render={props => ( <Stores {...props} data={this.state.data} selectMall={this.state.selectMall} changeSelectStores={this.changeSelectStores} />)} />
+        <Route
+          exact
+          path="/malls"
+          render={props => (
+            <Malls
+              {...props}
+              data={this.state.data}
+              filterList={this.filterList}
+              changeSelecMall={this.changeSelecMall}
+            />
+          )}
+        />
+        <Route
+          path="/stores"
+          render={props => (
+            <Stores
+              {...props}
+              data={this.state.data}
+              selectMall={this.state.selectMall}
+              changeSelectStores={this.changeSelectStores}
+            />
+          )}
+        />
         {/* <Route exact path="/admin" to="http://localhost:2550/admin" />
         <Route
           exact
           path="/AdminRole"
           render={props => <AdminRole {...props} data={this.state.data} />}
         /> */}
-        <Route path="/brands" render={props => ( <Brands {...props} data={this.state} filterStore={this.filterStore} changeSelectStores={this.changeSelectStores} stor={this.state.stores} /> )} />
+        <Route
+          path="/brands"
+          render={props => (
+            <Brands
+              {...props}
+              data={this.state}
+              filterStore={this.filterStore}
+              changeSelectStores={this.changeSelectStores}
+              stor={this.state.stores}
+            />
+          )}
+        />
         <Route path="/restaurants" component={Restaurants} />
         <Route path="/entertainment" component={Entertainment} />
         <Route path="/StoreDetails" component={StoreDetails} />
         <Route path="/service" component={Service} />
         <Route path="/aboutus" component={Aboutus} />
         <Route path="/myprofile" component={MyProfile} />
-        <Route path="/booking" render={props => <Booking {...props} user={this.state.user} />} />
+        <Route
+          path="/booking"
+          render={props => <Booking {...props} user={this.state.user} />}
+        />
         <Route exact path="/register" component={Signup} />
-        <Route exact path="/login"  render={() => <Login userLogIn={this.userLogIn} />} />
+        <Route
+          exact
+          path="/login"
+          render={() => <Login userLogIn={this.userLogIn} />}
+        />
 
         {/* <Footer /> */}
       </Router>
