@@ -8,13 +8,12 @@ import { withRouter} from "react-router-dom";
     startDate: new Date()
   };
   handleBook = async() => {
-    let booked = await axios.post("http://localhost:2550/api/v1/bookings/newbooking", {
+    let booked = await axios.post("/api/v1/bookings/newbooking", {
       user: [this.props.user, this.props.elm._id],
       booking_status: "appending",
       booking_time: this.state.date
     });
-    console.log(booked.data.msg);
-    if(booked.data.msg=='added')
+    if(booked.data.msg ==='added')
     {
       this.props.history.push("/myprofile");
     }
@@ -26,7 +25,6 @@ import { withRouter} from "react-router-dom";
     });
   };
   render() {
-    console.log(this.props.elm);
     return (
       <div>
         <Card body>

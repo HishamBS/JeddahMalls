@@ -1,14 +1,14 @@
 import React from "react";
-import { Header, Image, Table, Button } from "semantic-ui-react";
+import { Header, Table, Button } from "semantic-ui-react";
 import axios from "axios";
 const UserBookingTable = props => {
   let handleClick = status => {
     axios
-      .put(`http://localhost:2550/api/v1/bookings/book/${props.boke._id}`, {
+      .put(`/api/v1/bookings/book/${props.boke._id}`, {
         booking_status: status
       })
       .then(res => {
-        if (res.data.msg == "edited booking status successfully") {
+        if (res.data.msg === "edited booking status successfully") {
           window.location.replace("/myprofile");
         }
       })
@@ -21,7 +21,7 @@ const UserBookingTable = props => {
         <Table.Row>
           <Table.Cell>
             <Header as="h4" image>
-              {props.userType == false ? (
+              {props.userType === false ? (
                 <Header.Content>
                   {props.boke.user[1].first_name +
                     " " +

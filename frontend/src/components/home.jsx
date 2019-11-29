@@ -7,10 +7,8 @@ import personalShopper from '../imge/personalShopper.jpg'
 import Restaurant from '../imge/Restaurant.png'
 import muvi from '../imge/muvi.png'
 import Activity from '../imge/Activity.jpg'
-import mallsExplore from '../components/mallsExplore'
-import malls from './malls'
 import '../comp.css';
-import { Container ,Col,  Row, Carousel ,Card} from 'react-bootstrap';
+import { Container ,Col,  Row, Carousel} from 'react-bootstrap';
 
 import { MDBMask, MDBView, MDBContainer, MDBRow, MDBCol } from "mdbreact";
 

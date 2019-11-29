@@ -1,9 +1,6 @@
-import { MDBCol, MDBFormInline, MDBBtn , MDBIcon} from "mdbreact";
+import { MDBBtn } from "mdbreact";
 import BrandsExplore from './brandsExplore'
 import { Container} from 'react-bootstrap';
-import {  MDBtn } from "mdbreact";
-
-import axios from 'axios'
 
 
 import React, { Component } from 'react'
@@ -19,15 +16,13 @@ export default class brands extends Component {
 
   filterData = (e) =>{
     e.preventDefault()
-    console.log("test")
-    console.log(this.state.search)
+
     this.props.filterStore(this.state.search)
   }
  
   
   render(props) {
-    console.log(this.props);
-    console.log(this.props.stor);
+
 
     return (
 

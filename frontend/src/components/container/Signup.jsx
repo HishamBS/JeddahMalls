@@ -1,9 +1,9 @@
-import { Button, Checkbox, Form } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 import React, { Component } from "react";
 import { register } from "../functionAuth";
 export default class Signup extends Component {
   state = {
-    role:'regular'
+    role: "regular"
   };
   onChangHandler = e => {
     this.setState({
@@ -13,18 +13,16 @@ export default class Signup extends Component {
   onSubmitHandelr = e => {
     e.preventDefault();
     register(this.state);
-    console.log(e.target.value);
     this.props.history.push("/login");
   };
   render() {
-    console.log(this.state);
-    
+
     return (
       <div class="container">
         <Form onSubmit={this.onSubmitHandelr}>
-          <h3>Sign Up</h3>
+          <h3 className="ttb">Sign Up</h3>
           <Form.Field className="form-group">
-            <label>First name</label>
+            <label className="tb">First name</label>
             <input
               placeholder="First Name"
               className="form-control"
@@ -33,7 +31,7 @@ export default class Signup extends Component {
             />
           </Form.Field>
           <Form.Field className="form-group">
-            <label>Last name</label>
+            <label className="tb">Last name</label>
             <input
               placeholder="Last Name"
               className="form-control"
@@ -42,7 +40,7 @@ export default class Signup extends Component {
             />
           </Form.Field>
           <Form.Field className="form-group">
-            <label>Email address</label>
+            <label className="tb">Email address</label>
             <input
               placeholder="email"
               className="form-control"
@@ -51,7 +49,7 @@ export default class Signup extends Component {
             />
           </Form.Field>
           <Form.Field className="form-group">
-            <label>Password</label>
+            <label className="tb">Password</label>
             <input
               type="password"
               placeholder="password"
@@ -61,7 +59,7 @@ export default class Signup extends Component {
             />
           </Form.Field>
           <Form.Field className="form-group">
-            <label>role</label>
+            <label className="tb">role</label>
             <select name="role" onChange={this.onChangHandler}>
               <option selected value="regular" name="regular">
                 user
@@ -82,7 +80,7 @@ export default class Signup extends Component {
             Submit
           </Button>
           <p className="forgot-password text-right">
-            Already registered <a href="/">sign in?</a>
+            Already registered <a href="/login" >sign in?</a>
           </p>
         </Form>
       </div>

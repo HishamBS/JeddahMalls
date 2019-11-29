@@ -1,8 +1,7 @@
-import { Button, Checkbox, Form } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 import React, { Component } from "react";
 import { login } from "../functionAuth";
-import jwt_decode from "jwt-decode";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 class Login extends Component {
   state = {};
   onChangHandler = e => {
@@ -11,17 +10,20 @@ class Login extends Component {
     });
   };
   onSubmitHandelr = e => {
-    try {
+    
       e.preventDefault();
-      login(this.state);
-      setTimeout(() => {
+      login(this.state)
+      .then(res=>{
         this.props.history.push("/myprofile");
-      }, 3000);
-    } catch (error) {
-      console.log(error);
+      })
+      .catch(err => {console.log(err)})
+  
       
       
-    }
+      
+    
+
+    
   
    
   };
@@ -30,9 +32,9 @@ class Login extends Component {
     return (
       <div class="container">
         <Form onSubmit={this.onSubmitHandelr}>
-          <h3>Sign In</h3>
+          <h3 className="ttb">Sign In</h3>
           <Form.Field className="form-group">
-            <label>Email address</label>
+            <label className="tb">Email address</label>
             <input
               name="email"
               className="form-control"
@@ -41,7 +43,7 @@ class Login extends Component {
             />
           </Form.Field>
           <Form.Field className="form-group">
-            <label>Password</label>
+            <label className="tb">Password</label>
             <input
               name="password"
               type="password"

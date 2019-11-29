@@ -1,17 +1,13 @@
 import React from 'react'
-import Store from './stores'
 import { Container,Button} from 'react-bootstrap';
-import { Card, Icon, Image } from 'semantic-ui-react'
-import stores from './stores'
+import { Card,  Image } from 'semantic-ui-react'
 import {Link} from "react-router-dom"
-import { MDBBtn } from "mdbreact";
+
 
 
 export const mallsExplore = (props) => {
-  // console.log(props.ele.mall_name);
-  
+
   var changeSelecMall=()=>{
-    console.log(props.ele)
     props.changeSelecMall(props.ele)
   }
   

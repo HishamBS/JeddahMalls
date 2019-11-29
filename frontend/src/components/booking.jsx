@@ -15,17 +15,12 @@ class booking extends Component {
   componentDidMount() {
     if (!localStorage.usertoken) this.props.history.push("/login");
 
-    console.log("bookings");
-    axios.get("http://localhost:2550/api/v1/users/stylists").then(res => {
-      console.log(res.data);
+    axios.get("/api/v1/users/stylists").then(res => {
       this.setState({ data: res.data });
       this.setState({ sid: res.data });
     });
   }
   render() {
-    console.log(this.state.data);
-    console.log(this.state.data._id);
-    console.log(this.props.user);
 
     return (
       <Container>

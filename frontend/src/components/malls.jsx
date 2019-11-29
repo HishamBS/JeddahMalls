@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import '../comp.css';
 import MallsExplore from './mallsExplore'
 import { Container } from 'react-bootstrap';
@@ -8,7 +7,6 @@ import {  MDBBtn } from "mdbreact";
 
 export default class malls extends Component {
     state = {
-      search:''
     }
 
     handleChange = (e) => {
@@ -16,12 +14,10 @@ export default class malls extends Component {
     }
 
     filterData = (e) =>{
-      // e.preventDefault()
       this.props.filterList(this.state.search)
+
     }
     render() {
-      console.log(this.props)
-      console.log(this.state);
       
         return (
    <Container>
@@ -34,8 +30,7 @@ export default class malls extends Component {
           </div> 
 
           </div>    
-           
-                 { console.log(this.props.data)} 
+
                  
           <div className="conterner"> 
           {this.props.data.map( e =><MallsExplore  ele ={e} changeSelecMall={this.props.changeSelecMall}   changeSelectStores ={this.props.changeSelectStores}/>)}  

@@ -1,24 +1,21 @@
 import React, { Component } from "react";
-import { NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Search from "../imge/search.png";
 import sign from "../imge/sign.png";
 import logout from "../imge/logout.png";
 import logo from "../imge/logo.png";
-import Admin from "./admin";
 import "../App.css";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 export default class navbar extends Component {
   state = {
     activeItem: "home",
-    flag:false
+    flag: false
   };
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name });
     // extra
-    if (name == "logout" || name == "home") {
+    if (name === "logout" || name === "home") {
       this.props.history.push(`/`);
-      if (name == "logout") {
+      if (name === "logout") {
         localStorage.removeItem("usertoken");
       }
     } else {
@@ -28,11 +25,10 @@ export default class navbar extends Component {
   handleLogout = () => {
     localStorage.removeItem("usertoken");
   };
-  
-  componentDidMount (){
-    if(!localStorage.usertoken)
-    {
-      this.setState({flag:!this.state.flag})
+
+  componentDidMount() {
+    if (!localStorage.usertoken) {
+      this.setState({ flag: !this.state.flag });
     }
   }
   render() {
@@ -46,7 +42,8 @@ export default class navbar extends Component {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Link to="/Malls" className="nav-link">
-              Malls
+              {" "}
+              Malls{" "}
             </Link>
             <Link to="/restaurants" className="nav-link">
               Restaurants
@@ -61,12 +58,9 @@ export default class navbar extends Component {
               About Us
             </Link>
             <Link to="/myprofile" className="nav-link">
-              {this.state.flag? "" : "My Profile"}
+              {this.state.flag ? "" : "My Profile"}
             </Link>
           </Nav>
-          {/* <a href=""> <img src={Search} style={{width:60, marginTop: -6}} /></a>
-      <NavDropdown src={Search} id="basic-nav-dropdown">
-      </NavDropdown> */}
           <a
             href="/login"
             Button
@@ -95,7 +89,7 @@ export default class navbar extends Component {
           >
             <img
               src={logout}
-              style={{ width: 50 }}
+              style={{ width: 100 }}
               className={this.state.flag ? "hide" : "show"}
             />
           </a>

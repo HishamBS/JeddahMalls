@@ -1,37 +1,55 @@
 import React, { Component } from "react";
 import "../App.css";
 import axios from "axios";
-import { withRouter} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 //
- class Info extends Component {
+class Info extends Component {
   state = {
     first_name: this.props.data.first_name,
     last_name: this.props.data.last_name,
     email: this.props.data.email,
-    password: "",
     flag: false,
-    data: this.props.data
+    passFlag: false,
+    data: this.props.data,
+    password:'password'
   };
 
   handleEdit = () => {
     this.setState({ flag: !this.state.flag });
   };
+  handlePassword = () => {
+    this.setState({ passFlag: !this.state.passFlag });
+    this.setState({password:''})
+  };
   handleSave = async () => {
     let editedData = await axios({
       method: "put",
-      url: `http://localhost:2550/api/v1/users/profile/${this.props.data._id}`,
+      url: `/api/v1/users/profile/${this.props.data._id}`,
       headers: { "Content-Type": "application/json" },
       data: {
         first_name: this.state.first_name,
-        last_name: this.state.last_name,
+        last_name: this.state.last_name
+      }
+    });
+
+    if (editedData.data.msg === "edited successfully") {
+      localStorage.removeItem("usertoken");
+      this.props.history.push("/login");
+    }
+  };
+  handleSavePassword = async () => {
+    let editedData = await axios({
+      method: "put",
+      url: `/api/v1/users/profile/${this.props.data._id}`,
+      headers: { "Content-Type": "application/json" },
+      data: {
         password: this.state.password
       }
     });
-    console.log(editedData.msg);
-    
+
     if (editedData.data.msg === "edited successfully") {
-      localStorage.removeItem('usertoken');
+      localStorage.removeItem("usertoken");
       this.props.history.push("/login");
     }
   };
@@ -42,11 +60,15 @@ import { withRouter} from "react-router-dom";
       });
     }
   };
+  onPasswordChangeHandler = e => {
+    if (this.state.passFlag) {
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+    }
+  };
 
   render() {
-    console.log(this.state.first_name);
-    console.log(this.state.last_name);
-    console.log(this.state.password);
 
     return (
       <div>
@@ -82,26 +104,28 @@ import { withRouter} from "react-router-dom";
           <label htmlFor="">Email :</label>
           <label htmlFor="">{this.props.data.email}</label>
         </div>
-        <div className={this.state.flag ? "show" : "hide"}>
+        <div className={this.state.passFlag ? "show" : "hide"}>
           <label htmlFor="">password :</label>
           <input
             type="password"
             name="password"
             id=""
             value={this.state.password}
-            onChange={this.onChangeHandler}
+            onChange={this.onPasswordChangeHandler}
           />
         </div>
-        <div className={this.state.flag ? "hide" : "show"}>
+        <div className={this.state.passFlag ? "hide" : "show"}>
           <label htmlFor="">Password :</label>
-          <label>{this.state.password}</label>
+          <label>******************</label>
         </div>
         <div>
-          <button onClick={this.handleEdit}>edit</button>
+          <button onClick={this.handleEdit}>edit fields</button>
           <button onClick={this.handleSave}>save</button>
+          <button onClick={this.handlePassword}>edit password</button>
+          <button onClick={this.handleSavePassword}>save new password</button>
         </div>
       </div>
     );
   }
 }
-export default withRouter(Info)
+export default withRouter(Info);

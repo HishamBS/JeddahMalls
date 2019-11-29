@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
 import {Carousel, Container } from 'react-bootstrap';
-import { Button, Col,Row } from 'reactstrap';
-import { MDBCol, MDBFormInline, MDBBtn } from "mdbreact";
-import { Card, Icon, Image } from 'semantic-ui-react'
+import {  Col,Row } from 'reactstrap';
+import {  MDBBtn } from "mdbreact";
 import {Link} from "react-router-dom"
 import Brands from './brands'
 import axios from 'axios'
 import Reviews from '../imge/reviews.png'
-// import "node_modules/video-react/dist/video-react.css"; 
-import { Player } from 'video-react';
-import redsea from '../imge/redseam.jpg'
+
 export default class eachMall extends Component {
   constructor (props) {
     super(props);
@@ -20,20 +17,15 @@ export default class eachMall extends Component {
   }
   componentDidMount()
   { 
-    console.log('called component did mount')
+
     axios.get(`/api/v1/malls/${this.props.selectMall._id}/stores`)
       .then(res =>{
         this.props.changeSelectStores(res.data)
-        console.log(res.data);
         this.setState({items:res.data})          
       })   
   }
-  // 5ddb729d07cf2170b9ff3920
     render() {
-    //  console.log(props);
-      console.log(this.state.items)
-      console.log(this.props.selectMall._id)
-       console.log(this.props.selectMall)
+
         return (
           <Container>
             <br/>

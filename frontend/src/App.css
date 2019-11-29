@@ -23,6 +23,7 @@
 .conterner {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  
 }
 .conternerBotton {
   display: grid;
@@ -92,4 +93,48 @@
 }
 .show{
   display: inherit;
+}
+
+.tb{
+  font-size: 25px;
+  color: black;
+  font-family: initial;
+
+}
+.ttb{
+  font-size: 35px;
+  color: black;
+  font-family: initial;
+  text-align: center;
+}
+.container {
+  background-color:rgba(63, 64, 67, 0.20);
+border-radius: 5px;
+margin-top: 40px;
+
+}
+.bigDiv{
+  padding: 20px;
+  margin: 30px;
+}
+.cont{
+  padding: 30px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ul { 
+  list-style: none;
+}
+.li {
+  font-size: 30px;
+}
+
+.imgSmall {
+width: 300px;
+margin: 0px 100px;
+}
+
+.img {
+  width: 70% ;
 }
